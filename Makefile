@@ -1,5 +1,5 @@
 PKG_NAME := ocperftools
-URL = file:///aot/build/clearlinux/packages/insync/insync-v3.7.5.50350.tar.gz
+URL = /insilications/build/custom-apps/ocperftools-clr/
 ARCHIVES = 
 ARCHIVES_GIT = 
 
