@@ -5,13 +5,14 @@
 %define keepstatic 1
 Name     : ocperftools
 Version  : 1.0.0
-Release  : 3
+Release  : 4
 URL      : file:///aot/build/clearlinux/packages/ocperftools/ocperftools-v1.0.0.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/ocperftools/ocperftools-v1.0.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: ocperftools-bin = %{version}-%{release}
+Requires: parallel
 BuildRequires : bash
 BuildRequires : buildreq-cmake
 BuildRequires : ca-certs
@@ -25,6 +26,7 @@ BuildRequires : mlocate
 BuildRequires : openssl-dev
 BuildRequires : openssl-lib
 BuildRequires : p11-kit
+BuildRequires : parallel
 BuildRequires : pcre-dev
 BuildRequires : pcre-extras
 BuildRequires : sd
@@ -54,7 +56,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650283466
+export SOURCE_DATE_EPOCH=1650289764
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -70,7 +72,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650283466
+export SOURCE_DATE_EPOCH=1650289764
 rm -rf %{buildroot}
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar

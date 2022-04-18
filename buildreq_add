@@ -17,3 +17,4 @@ pcre-dev
 pcre-extras
 sd
 zlib-dev
+parallel
