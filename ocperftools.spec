@@ -5,12 +5,13 @@
 %define keepstatic 1
 Name     : ocperftools
 Version  : 1.0.0
-Release  : 2
+Release  : 3
 URL      : file:///aot/build/clearlinux/packages/ocperftools/ocperftools-v1.0.0.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/ocperftools/ocperftools-v1.0.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
+Requires: ocperftools-bin = %{version}-%{release}
 BuildRequires : bash
 BuildRequires : buildreq-cmake
 BuildRequires : ca-certs
@@ -31,13 +32,17 @@ BuildRequires : zlib-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
-# Ignore missing build ids
-%undefine _missing_build_ids_terminate_build
-# Disable automatic requeriments processing
-AutoReq: no
 
 %description
 No detailed description available
+
+%package bin
+Summary: bin components for the ocperftools package.
+Group: Binaries
+
+%description bin
+bin components for the ocperftools package.
+
 
 %prep
 %setup -q -n ocperftools-clr
@@ -49,7 +54,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650283364
+export SOURCE_DATE_EPOCH=1650283466
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -65,7 +70,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650283364
+export SOURCE_DATE_EPOCH=1650283466
 rm -rf %{buildroot}
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -81,3 +86,9 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/ocperf2bolt
+/usr/bin/ocperfrun
+/usr/bin/ocperfrunsettings
