@@ -1,5 +1,5 @@
 PKG_NAME := ocperftools
-URL = /insilications/build/custom-apps/ocperftools-clr/
+URL = 
 ARCHIVES = 
 ARCHIVES_GIT = 
 

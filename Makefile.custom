@@ -1,0 +1,18 @@
+#sd 'LC_TIME=C' 'LC_TIME=C QT_QPA_PLATFORM=xcb QTWEBENGINE_CHROMIUM_FLAGS="--no-sandbox"' 'insync';
+# cp -a /insilications/gstuff/stuff/things/build/mybin/ocperf2bolt /insilications/build/custom-apps/ocperftools-clr/usr/bin/ocperf2bolt
+# cp -a /insilications/gstuff/stuff/things/build/mybin/ocperfrun /insilications/build/custom-apps/ocperftools-clr/usr/bin/ocperfrunsettings
+# cp -a /insilications/gstuff/stuff/things/build/mybin/ocperfrunsettings /insilications/build/custom-apps/ocperftools-clr/usr/bin/ocperfrun
+
+update-it:
+	-@if ! compgen -G "ocperftools-*.tar.gz" > /dev/null; then \
+		cp -a /insilications/gstuff/stuff/things/build/mybin/ocperf2bolt /insilications/build/custom-apps/ocperftools-clr/usr/bin/ocperf2bolt; \
+		cp -a /insilications/gstuff/stuff/things/build/mybin/ocperfrun /insilications/build/custom-apps/ocperftools-clr/usr/bin/ocperfrunsettings; \
+		cp -a /insilications/gstuff/stuff/things/build/mybin/ocperfrunsettings /insilications/build/custom-apps/ocperftools-clr/usr/bin/ocperfrun; \
+		(cd /insilications/build/custom-apps/ocperftools-clr/usr/bin/; gmaa;) \
+	fi
+
+preautospec-checks: update-it
+
+preautospecnew-checks: update-it
+
+prebuild-checks: update-it
